@@ -1,0 +1,42 @@
+{
+  "name": "reactwithwebpack",
+  "version": "1.0.0",
+  "description": "practice building react project with webpack\r it will use webpack4.x react-router  redux-router node antd to practice react project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wang3690004/reactWithWebpack.git"
+  },
+  "author": "wanj3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wang3690004/reactWithWebpack/issues"
+  },
+  "homepage": "https://github.com/wang3690004/reactWithWebpack#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "antd": "^3.19.8",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.35.0",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
+  }
+}
