@@ -11,19 +11,19 @@ module.exports = {
   },
   module:{
     rules:[
-      // {
-      //   test: /\.css$/,
-      //   use:['style-loader','css-loader']
-      // },
+      {
+        test: /\.css$/,
+        use:['style-loader','css-loader']
+      },
       {
         test:/\.js[x]?$/,
         use:'babel-loader',
         exclude: /node_modules/
       },
-      {
-        test:/\.less$/,
-        use:['style-loader',{loader:'css-loader',options:{importLoaders:1}}, 'less-loader'],
-      }
+      // {
+      //   test:/\.less$/,
+      //   use:['style-loader',{loader:'css-loader',options:{importLoaders:1}}, 'less-loader'],
+      // }
     ]
   },
   plugins:[

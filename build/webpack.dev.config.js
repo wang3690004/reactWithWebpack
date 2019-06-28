@@ -24,10 +24,11 @@ module.exports = merge(baseConfig,{
   ],
   devServer: {   //关于devserver的一些配置还需要了解
     contentBase:path.join(__dirname, '../src'),
-    // compress:true, 
+    hot:true,
+    compress:true, 
     historyApiFallback:true, //让所有404页面定位到index.html
-    // hotOnly:true,
-    open:true,
+    open:true,   //关于热更新问题 还仍然残留 不知道配置的到底对不对，
+    noInfo:true,
     proxy:{},
     port:3001
   }

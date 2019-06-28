@@ -32,16 +32,20 @@ module.exports = merge(baseConfig,{
     }
   }, 
   module:{
-    rules:[
-      {
-        test:/\.(css)$/,
-        use:[
-          MiniCssExtractPlugin.loader,
-          {loader:'css-loader'},
-          {options:{modules:true,localIdentName:'[local]__[hash:7]'}}
+    rules:[{
+        test: /\.(css)$/,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+                loader:'css-loader',
+                options:{
+                    // importLoaders: 1,
+                    modules: true,
+                    // localIdentName: '[local]__[hash:7]',
+                }  
+            }  //不知道为什么一配置这个options就报错
         ]
-      }
-    ]
+    }]
   },
   plugins:[
       new HtmlWebpackPlugin({
