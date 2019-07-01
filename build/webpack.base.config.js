@@ -20,6 +20,12 @@ module.exports = {
         use:'babel-loader',
         exclude: /node_modules/
       },
+      {
+        test:/\.(png|jpg|gif)$/,
+        use:[{
+          loader:'url-loader', //这里需要对图片进行设置base64转换， 并且outputPath 定义输出图片的文件夹
+      }]
+      },
       // {
       //   test:/\.less$/,
       //   use:['style-loader',{loader:'css-loader',options:{importLoaders:1}}, 'less-loader'],
@@ -27,6 +33,5 @@ module.exports = {
     ]
   },
   plugins:[
-    // new BundleAnalyzerPlugin()
   ]
 }

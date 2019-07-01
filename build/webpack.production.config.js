@@ -5,8 +5,6 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') //打包css成一个统一的文件
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') //压缩css
 
-
-
 module.exports = merge(baseConfig,{
   mode:'production',
   output:{
