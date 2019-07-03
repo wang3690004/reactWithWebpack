@@ -1,17 +1,18 @@
-import React,{Component} from 'react';
+import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-class App extends Component {
+class App extends React.Component {
   constructor(props){
+    super(props)
     this.state = {
       collapsed: false,
     }
   }
 
   onCollapse = () => {
-    console.log(collapsed)
+    console.log(this.state.collapsed)
     this.setState({collapsed:true })
   };  //syntax 'classproperties is't currently enabled     不支持装饰器写法需要配置babel
 
