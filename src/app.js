@@ -3,17 +3,55 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 import {BroswerRouter,Router, Route,Link } from 'react-router-dom'
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
+import {getUser} from './apis/user'
+import Mock from 'mockjs'
+import {menus} from './mock/data'
+
+ Mock.mock('/ecnw-web/getmenu','post',{
+  'success':true,
+  'data':{
+    'displayName':'cloudvpn',
+    'loginName':'cloudvpn',
+    'menu':[{
+      'cnName':'用户',
+      'enName':'用户',
+      'key':1,
+      'children':[]
+    },{
+      'cnName':'用户组',
+      'enName':'用户组',
+      'key':2,
+      'children':[]
+    }]
+  }
+})
+
 
 class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       collapsed: false,
+      test :undefined,
+      a:3
     }
   }
 
+  componentDidMount(){
+    try{
+      getUser().then((res)=>{
+        alert(JSON.stringify(res))
+        this.setState({test:res},()=>{
+          console.log(this.state.test)
+        })
+      })
+    }catch(err){
+      console.log(err)
+    }
+    
+  }
+  
   onCollapse = () => {
-    console.log(this.state.collapsed)
     this.setState({collapsed:true })
   };  //syntax 'classproperties is't currently enabled     不支持装饰器写法需要配置babel
 
@@ -69,7 +107,7 @@ class App extends React.Component {
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Bill is a cat.</div>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}></div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
         </Layout>
