@@ -29,7 +29,8 @@ module.exports = merge(baseConfig,{
     historyApiFallback:true, //让所有404页面定位到index.html
     open:true,   //关于热更新问题 还仍然残留 不知道配置的到底对不对，
     noInfo:true,
-    proxy:{},
+    proxy:{
+    },
     port:3001
   }
 })
