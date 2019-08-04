@@ -1,8 +1,6 @@
 import axios from 'axios'
-// import Mock from 'mockjs'
-// import {menus} from '../mock/data'
+import '../mock/index.js'
 
-//  Mock.mock('/ecnw-web/getmenu',menus)
 
 let axiosinstance = axios.create({
   baseURL:'/ecnw-web',

@@ -1,6 +1,4 @@
 export const menus = {
-  'success':true,
-  'data':{
     'displayName':'cloudvpn',
     'loginName':'cloudvpn',
     'menu':[{
@@ -14,5 +12,5 @@ export const menus = {
       'key':2,
       'children':[]
     }]
-  }
+
 }

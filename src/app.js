@@ -4,27 +4,6 @@ import {BroswerRouter,Router, Route,Link } from 'react-router-dom'
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 import {getUser} from './apis/user'
-import Mock from 'mockjs'
-import {menus} from './mock/data'
-
- Mock.mock('/ecnw-web/getmenu','post',{
-  'success':true,
-  'data':{
-    'displayName':'cloudvpn',
-    'loginName':'cloudvpn',
-    'menu':[{
-      'cnName':'用户',
-      'enName':'用户',
-      'key':1,
-      'children':[]
-    },{
-      'cnName':'用户组',
-      'enName':'用户组',
-      'key':2,
-      'children':[]
-    }]
-  }
-})
 
 
 class App extends React.Component {
@@ -32,23 +11,22 @@ class App extends React.Component {
     super(props)
     this.state = {
       collapsed: false,
-      test :undefined,
+      test :{},
       a:3
-    }
+    } 
   }
 
   componentDidMount(){
+   this.getmenudata()
+  }
+
+  getmenudata = async () => {
     try{
-      getUser().then((res)=>{
-        alert(JSON.stringify(res))
-        this.setState({test:res},()=>{
-          console.log(this.state.test)
-        })
-      })
+      let res = await getUser()
+      this.setState({test:res.data})
     }catch(err){
       console.log(err)
     }
-    
   }
   
   onCollapse = () => {
@@ -56,6 +34,7 @@ class App extends React.Component {
   };  //syntax 'classproperties is't currently enabled     不支持装饰器写法需要配置babel
 
   render() {
+    console.log(this.state.test)
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
@@ -107,8 +86,7 @@ class App extends React.Component {
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>这里应该是存放组件的位置的，在menu处是需要根据路由表做一个遍历的，通过判断id 子组件来进行遍历</div>
-            
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}  onClick={()=>{console.log(this.state.test.displayName)}} ><span>{this.state.test.displayName}</span>这里应该是存放组件的位置的，在menu处是需要根据路由表做一个遍历的，通过判断id 子组件来进行遍历</div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
         </Layout>

@@ -24,6 +24,7 @@ module.exports = merge(baseConfig,{
   ],
   devServer: {   //关于devserver的一些配置还需要了解
     contentBase:path.join(__dirname, '../src'),
+    clientLogLevel:'error',
     hot:true,
     compress:true, 
     historyApiFallback:true, //让所有404页面定位到index.html
