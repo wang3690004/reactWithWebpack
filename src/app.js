@@ -1,18 +1,18 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon,Message} from 'antd'
 import {BroswerRouter,Router, Route,Link } from 'react-router-dom'
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 import {getUser} from './apis/user'
-
+import RouteIndex from './route/index'
+import User from './pages/user/index'
 
 class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       collapsed: false,
-      test :{},
-      a:3
+      mockmenu :{},
     } 
   }
 
@@ -23,9 +23,9 @@ class App extends React.Component {
   getmenudata = async () => {
     try{
       let res = await getUser()
-      this.setState({test:res.data})
+      this.setState({mockmenu:res.data})
     }catch(err){
-      console.log(err)
+      Message.error(err.msg)
     }
   }
   
@@ -34,7 +34,6 @@ class App extends React.Component {
   };  //syntax 'classproperties is't currently enabled     不支持装饰器写法需要配置babel
 
   render() {
-    console.log(this.state.test)
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
@@ -42,6 +41,7 @@ class App extends React.Component {
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1">
               <Icon type="pie-chart" />
+              <Link to ='/user'></Link>
               <span>Option 1</span>
             </Menu.Item>
             <Menu.Item key="2">
@@ -78,6 +78,8 @@ class App extends React.Component {
               <span>File</span>
             </Menu.Item>
           </Menu>
+
+
         </Sider>
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }} />
@@ -86,7 +88,9 @@ class App extends React.Component {
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}  onClick={()=>{console.log(this.state.test.displayName)}} ><span>{this.state.test.displayName}</span>这里应该是存放组件的位置的，在menu处是需要根据路由表做一个遍历的，通过判断id 子组件来进行遍历</div>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+                <RouteIndex />
+            </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
         </Layout>
