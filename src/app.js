@@ -1,11 +1,11 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon,Message} from 'antd'
-import {BroswerRouter,Router, Route,Link } from 'react-router-dom'
+import {BroswerRouter,Link } from 'react-router-dom'
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 import {getUser} from './apis/user'
 import RouteIndex from './route/index'
-import User from './pages/user/index'
+
 
 class App extends React.Component {
   constructor(props){
@@ -41,12 +41,11 @@ class App extends React.Component {
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1">
               <Icon type="pie-chart" />
-              <Link to ='/user'></Link>
-              <span>Option 1</span>
+              <Link to ='/user'><span>asdasd</span></Link>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="desktop" />
-              <span>Option 2</span>
+              <span><Link to ='/usergroup'>Option 2</Link></span>
             </Menu.Item>
             <SubMenu
               key="sub1"
