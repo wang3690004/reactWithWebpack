@@ -14,16 +14,15 @@ class User extends React.Component {
         console.log(store.getState())
     }
     setReduxState = (e)=>{
-        console.log(e)
-        this.setState({inputvalue:e.target.value},()=>{console.log(this.state.inputvalue)})
-        store.dispatch(getInputChangeAction(e.target.value))
+        this.setState({inputvalue:e.target.value},()=>{store.dispatch(getInputChangeAction(this.state.inputvalue))})
+        
     }
 
     render(){
         return(
             <div>
-                <Input value={this.state.inputvalue} onChange={this.setReduxState}  />
-                <Button>查看redux的state</Button>
+                <Input value={this.state.inputvalue} onChange={(e)=>this.setReduxState(e)}  />
+                <Button onClick={this.getReduxState}>查看redux的state</Button>
             </div>
         )
     }
