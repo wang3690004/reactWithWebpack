@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon,Message} from 'antd'
-import {BroswerRouter,Link } from 'react-router-dom'
+import {Link } from 'react-router-dom'
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 import {getUser} from './apis/user'
